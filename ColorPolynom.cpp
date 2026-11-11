@@ -20,6 +20,9 @@ string code(const string& col) {
     if (col == "red") {
         return "\033[0;31m";
     }
+    if (col == "white") {
+        return "\033[0;37m";
+    }
     return "";
 }
 
@@ -61,6 +64,19 @@ ColorPolynom ColorPolynom::operator++(int) {
     return old;
 }
 
+ColorPolynom& ColorPolynom :: operator++(){
+    double *temp = new double[n+1];
+    for(int i =0; i < n; i++){
+        temp[i] = a[i];}
+    temp[n] = 1;
+    delete [] a;
+    a = temp;
+    n++;
+
+    return *this;
+}
+
+
 ColorPolynom ColorPolynom::operator--(int) {
     ColorPolynom old(*this);
     if (n > 1) {
@@ -75,6 +91,17 @@ ColorPolynom ColorPolynom::operator--(int) {
 
     return old;
 }
+
+ColorPolynom& ColorPolynom :: operator--(){
+    double *temp = new double[n-1];
+    for (int i = 0; i < n-1; i++){
+        temp[i] = a[i];
+    }
+    delete[] a;
+    a = temp;
+    n--;
+    return *this;
+    }
 
 double& ColorPolynom::operator[](int i) {
     return a[i];
