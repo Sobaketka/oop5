@@ -15,7 +15,9 @@ public:
     ~ColorPolynom();
     ColorPolynom& operator=(const ColorPolynom& two);
     ColorPolynom operator++(int);
+    ColorPolynom& operator++();
     ColorPolynom operator--(int);
+    ColorPolynom& operator--();
     double& operator[](int i);
     friend std::ostream& operator<<(std::ostream& os, const ColorPolynom& p);
     void setColor(std::string c);
